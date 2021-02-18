@@ -1,4 +1,7 @@
 .global draw_triangle
+;get user input
+li $v0,5
+syscall
 
 move $t0,$a0
 
@@ -30,7 +33,7 @@ draw_triangle:
 
     ;print space
 
-    li $a0,32
+    li $s0,32
     li $v0,11
     syscall
 
@@ -46,7 +49,7 @@ draw_triangle:
 
     ;print star
 
-    li $a0,42
+    li $s0,42
     li $v0,11
     syscall
 
@@ -65,7 +68,7 @@ draw_triangle:
 
     ;else print space
 
-    li $a0,32
+    li $s0,32
     li $v0,11
     syscall
 
@@ -87,7 +90,7 @@ end:
 li $t9,1
 
 
-li $a0,10
+li $s0,10
 li $v0,11
 syscall
 
