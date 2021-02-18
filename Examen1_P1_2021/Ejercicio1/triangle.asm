@@ -1,8 +1,6 @@
-;get user input
-li $v0,5
-syscall
+.global draw_triangle
 
-move $t0,$v0
+move $t0,$a0
 
 ;stars per iteration
 li $t1,1
@@ -25,10 +23,10 @@ draw_triangle:
     li $t6,0
 
 
-    print_outer_space:
+    printOuterSpace:
 
 
-    beq $t4,$t2,print_star
+    beq $t4,$t2,printStar
 
     ;print space
 
@@ -36,13 +34,13 @@ draw_triangle:
     li $v0,11
     syscall
 
-    ;counter++
+    
     addi $t4,$t4,1
 
-    j print_outer_space
+    j printOuterSpace
 
 
-    print_star:
+    printStar:
 
     beq $t6,$t1,end
 
@@ -71,7 +69,7 @@ draw_triangle:
     li $v0,11
     syscall
 
-    ;counter++
+    
     addi $t5,$t5,1
 
 
@@ -80,7 +78,7 @@ draw_triangle:
     print_inner_space_end:
 
 
-    j print_star
+    j printStar
 
 end:
 
@@ -93,13 +91,13 @@ li $a0,10
 li $v0,11
 syscall
 
-;counter++
+
 
 addi $t7,$t7,1
 
 addi $t2,$t2,-1
 
-beq $t7,$t9,add_one
+beq $t7,$t9,addOne
 
 
 addi $t3,$t3,2
@@ -108,11 +106,11 @@ bne $t7,$t9,ignore
 
 
 
-add_one:
+addOne:
 addi $t3,$t3,1
 
 
-;skip add_one
+;skip addOne
 
 ignore:
 
@@ -130,7 +128,7 @@ if_end:
 
 bne $t0,$t7,draw_triangle
 
-last_line:
+lastLine:
 
 li $a0,42
 li $v0,11
@@ -138,7 +136,7 @@ syscall
 
 addi $t1, $t1, 1
 
-bne $t1,$t0,last_line
+bne $t1,$t0,lastLine
 
 li $a0,10
 li $v0,11
